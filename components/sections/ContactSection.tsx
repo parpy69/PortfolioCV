@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contact } from "@/lib/siteData";
+import { useState } from "react";
 
 // Map icon names to actual icon components
 const iconMap = {
@@ -15,6 +16,34 @@ const iconMap = {
 };
 
 export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background glow */}
@@ -58,23 +87,56 @@ export default function ContactSection() {
             </div>
 
             <div className="glass-card p-8 rounded-2xl">
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
+                <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+                
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Name</label>
-                    <Input placeholder="John Doe" className="bg-secondary/30 border-white/5" />
+                    <Input 
+                      name="name"
+                      placeholder="John Doe" 
+                      className="bg-secondary/30 border-white/5" 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Email</label>
-                    <Input placeholder="john@example.com" className="bg-secondary/30 border-white/5" />
+                    <Input 
+                      name="email"
+                      type="email"
+                      placeholder="john@example.com" 
+                      className="bg-secondary/30 border-white/5" 
+                      required 
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Message</label>
-                  <Textarea placeholder="Tell me about your project..." className="min-h-[120px] bg-secondary/30 border-white/5" />
+                  <Textarea 
+                    name="message"
+                    placeholder="Tell me about your project..." 
+                    className="min-h-[120px] bg-secondary/30 border-white/5" 
+                    required 
+                  />
                 </div>
-                <Button className="w-full gap-2">
-                  Send Message
+                
+                {submitStatus === "success" && (
+                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
+                    ✓ Message sent successfully!
+                  </div>
+                )}
+                
+                {submitStatus === "error" && (
+                  <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                    ✗ Failed to send. Please try again.
+                  </div>
+                )}
+                
+                <Button className="w-full gap-2" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="w-4 h-4" />
                 </Button>
               </form>
