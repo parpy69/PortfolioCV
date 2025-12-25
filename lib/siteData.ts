@@ -1,9 +1,6 @@
-// ============================================
-// SITE CONTENT - EDIT THIS FILE TO UPDATE YOUR PORTFOLIO
-// ============================================
+// Site content - edit this to update your portfolio
 
-// HERO SECTION
-// EDIT THIS TEXT: Main headline and tagline
+// Hero section
 export const hero = {
   badge: "Available for hire",
   title: "Full-Stack Developer",
@@ -13,8 +10,7 @@ export const hero = {
   secondaryCTA: "Contact me",
 };
 
-// ABOUT SECTION
-// EDIT THIS TEXT: Personal bio and facts about you
+// About section
 export const about = {
   paragraphs: [
     "Hey, I'm Abdullah. I'm a developer who loves building real projects that solve practical problems. I don't just write code; I care about the end-user experience and shipping products that feel great to use.",
@@ -28,16 +24,14 @@ export const about = {
   ]
 };
 
-// SKILLS SECTION
-// EDIT THIS: Add or remove skills from each category
+// Skills
 export const skills = {
   Frontend: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
   Backend: ["Node.js", "PostgreSQL", "Prisma", "REST APIs", "Auth"],
   Tools: ["Vercel", "GitHub", "Stripe", "Neon", "Cursor", "Replit"],
 };
 
-// PROJECTS SECTION
-// EDIT THIS: Add new projects by adding objects to this array
+// Projects
 export const projects = [
   {
     title: "DBInsight",
@@ -68,8 +62,7 @@ export const projects = [
   }
 ];
 
-// EXPERIENCE SECTION
-// EDIT THIS: Add work experience entries
+// Work experience
 export const experience = [
   {
     role: "SaaS Builder",
@@ -85,8 +78,7 @@ export const experience = [
   }
 ];
 
-// CONTACT SECTION
-// EDIT THIS: Update your contact information and social links
+// Contact info
 export const contact = {
   heading: "Let's Connect",
   subheading: "Want to work together or have a project in mind? Reach out. I'm always open to discussing new opportunities and ideas.",
@@ -113,8 +105,7 @@ export const contact = {
   ]
 };
 
-// NAVIGATION
-// EDIT THIS: Update navigation links (must match section IDs in page.tsx)
+// Navigation
 export const navigation = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
@@ -123,8 +114,7 @@ export const navigation = [
   { name: "Contact", href: "#contact" },
 ];
 
-// SITE METADATA
-// EDIT THIS: Update SEO information
+// SEO metadata
 export const siteMetadata = {
   title: "Abdullah Khudeish - Full-Stack Developer & SaaS Builder",
   description: "Portfolio of Abdullah Khudeish, a Full-Stack Developer & SaaS Builder. Building clean UIs, APIs & tools with Next.js, TypeScript, and modern web technologies.",
@@ -133,8 +123,7 @@ export const siteMetadata = {
   ogImage: "/opengraph.jpg", // Place your OG image in the public folder
 };
 
-// FOOTER
-// EDIT THIS: Footer text
+// Footer
 export const footer = {
   text: "Built with Next.js & Tailwind"
 };
