@@ -5,7 +5,7 @@ export const hero = {
   badge: "Available for hire",
   title: "Full-Stack Developer",
   titleHighlight: "& SaaS Builder",
-  description: "I build clean, fast web apps and tools for dev teams. Currently focusing on modern SaaS products like DBInsight.",
+  description: "I build SaaS products end-to-end. UI, APIs, auth, billing, and deployment. I combine full-stack development with AI-assisted workflows so I can ship faster without losing control of the code.",
   primaryCTA: "View my projects",
   secondaryCTA: "Contact me",
 };
@@ -52,10 +52,10 @@ export const projects = [
     gradient: "from-cyan-500/20 to-teal-500/20"
   },
   {
-    title: "Booking / Calendar UI",
-    description: "Custom booking interface with a calendar-style layout, drag-and-drop scheduling, and payment integration.",
-    tags: ["React", "Calendar", "UI/UX"],
-    liveUrl: "#",
+    title: "Booking Platform Frontend Redesign",
+    description: "Freelance project redesigning the entire frontend for a booking platform. Modernized the UI/UX across the site including the calendar interface, scheduling system, and overall design.",
+    tags: ["React", "UI/UX", "Freelance", "Redesign"],
+    liveUrl: "https://www.youtube.com/watch?v=i2VuxZT8AOE",
     detailsUrl: "#",
     featured: false,
     gradient: "from-pink-500/20 to-rose-500/20"
@@ -75,6 +75,12 @@ export const experience = [
     company: "Self-Employed",
     period: "2025 - Present",
     description: "Building high-performance Next.js landing pages, custom dashboards, and e-commerce frontends for various clients. Focus on clean code and pixel-perfect implementation."
+  },
+  {
+    role: "Software Tester",
+    company: "AVGAR - TotalCoach",
+    period: "2022 - 2024",
+    description: "Performed testing for the TotalCoach app. Identified bugs, documented test cases, and ensured quality standards were met before deployment."
   }
 ];
 

@@ -59,11 +59,6 @@ export default function ProjectsSection() {
                         <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" className="w-full border-white/10 hover:bg-white/5" asChild>
-                      <a href={project.detailsUrl} target="_blank" rel="noreferrer">
-                        Details
-                      </a>
-                    </Button>
                   </CardFooter>
                 </Card>
               </motion.div>

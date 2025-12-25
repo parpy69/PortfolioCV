@@ -88,7 +88,7 @@ export default function ContactSection() {
 
             <div className="glass-card p-8 rounded-2xl">
               <form className="space-y-4" onSubmit={handleSubmit}>
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="access_key" value="12dc058c-699e-4a2d-90fd-012fda900850" />
                 <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
                 <input type="hidden" name="from_name" value="Portfolio Contact Form" />
                 
