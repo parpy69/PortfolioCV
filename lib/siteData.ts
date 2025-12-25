@@ -19,8 +19,8 @@ export const about = {
   facts: [
     { icon: "MapPin", text: "Based in Auckland, New Zealand" },
     { icon: "Code", text: "Breaking comfort zones one project at a time" },
-    { icon: "User", text: "Enjoys gaming & building side projects" },
-    { icon: "Cpu", text: "Playing with AI tools & LLMs" },
+    { icon: "User", text: "Turning ideas into working prototypes & apps" },
+    { icon: "Cpu", text: "AI-accelerated workflow (Cursor, ChatGPT, Claude) for faster builds and cleaner code" },
   ]
 };
 
