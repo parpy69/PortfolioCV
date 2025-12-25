@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const targetPosition = useRef({ x: 0, y: 0 });
+  const animationFrameId = useRef<number>();
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      targetPosition.current = { x: e.clientX, y: e.clientY };
       if (!isVisible) setIsVisible(true);
     };
 
@@ -25,19 +27,43 @@ export function CursorGlow() {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const lerp = (start: number, end: number, factor: number) => {
+      return start + (end - start) * factor;
+    };
+
+    const animate = () => {
+      setPosition((prev) => ({
+        x: lerp(prev.x, targetPosition.current.x, 0.15),
+        y: lerp(prev.y, targetPosition.current.y, 0.15),
+      }));
+
+      animationFrameId.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <div
-      className="fixed pointer-events-none -z-10 transition-opacity duration-300"
+      className="fixed pointer-events-none z-0"
       style={{
-        opacity: isVisible ? 1 : 0,
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: "translate(-50%, -50%)",
-        transition: "transform 100ms ease-out, opacity 300ms ease-out",
+        left: `${position.x - 75}px`,
+        top: `${position.y - 75}px`,
+        width: "150px",
+        height: "150px",
+        background: "radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, rgba(168, 85, 247, 0.3) 40%, transparent 70%)",
+        filter: "blur(30px)",
       }}
-    >
-      <div className="w-[400px] h-[400px] bg-purple-600/60 rounded-full blur-3xl" />
-    </div>
+    />
   );
 }
 
