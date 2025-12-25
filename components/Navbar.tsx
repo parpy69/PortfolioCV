@@ -54,9 +54,11 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button variant="outline" size="sm" className="hidden lg:flex gap-2">
-            <Download className="w-4 h-4" />
-            CV
+          <Button variant="outline" size="sm" className="hidden lg:flex gap-2" asChild>
+            <a href="/Abdullah_Khudeish_CV.pdf" download>
+              <Download className="w-4 h-4" />
+              CV
+            </a>
           </Button>
         </div>
 
@@ -82,9 +84,11 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button className="w-full gap-2 mt-4">
-            <Download className="w-4 h-4" />
-            Download CV
+          <Button className="w-full gap-2 mt-4" asChild>
+            <a href="/Abdullah_Khudeish_CV.pdf" download>
+              <Download className="w-4 h-4" />
+              Download CV
+            </a>
           </Button>
         </div>
       )}
